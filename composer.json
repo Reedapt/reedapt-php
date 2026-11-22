@@ -1,0 +1,73 @@
+{
+    "name": "reedapt/reedapt-php",
+    "description": "The official PHP library for the Reedapt API, with Laravel support.",
+    "keywords": ["reedapt", "dubbing", "api", "sdk", "laravel"],
+    "type": "library",
+    "license": "MIT",
+    "homepage": "https://docs.reedapt.com",
+    "authors": [
+        { "name": "Reedapt", "email": "support@reedapt.com" }
+    ],
+    "support": {
+        "email": "support@reedapt.com",
+        "docs": "https://docs.reedapt.com"
+    },
+    "require": {
+        "php": "^8.1",
+        "ext-json": "*",
+        "php-http/discovery": "^1.19",
+        "psr/http-client": "^1.0",
+        "psr/http-factory": "^1.0",
+        "psr/http-message": "^1.1 || ^2.0"
+    },
+    "require-dev": {
+        "guzzlehttp/guzzle": "^7.8",
+        "laravel/pint": "^1.13",
+        "orchestra/testbench": "^8.0 || ^9.0 || ^10.0",
+        "phpstan/phpstan": "^2.0",
+        "phpunit/phpunit": "^10.5 || ^11.0 || ^12.0"
+    },
+    "suggest": {
+        "guzzlehttp/guzzle": "A PSR-18 client with PSR-17 factories; used automatically when installed.",
+        "symfony/http-client": "An alternative PSR-18 client (with nyholm/psr7).",
+        "laravel/framework": "Enables the service provider, facade, webhook middleware and events (10.x, 11.x or 12.x)."
+    },
+    "autoload": {
+        "psr-4": {
+            "Reedapt\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Reedapt\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Reedapt\\Laravel\\ReedaptServiceProvider"
+            ],
+            "aliases": {
+                "Reedapt": "Reedapt\\Laravel\\Facades\\Reedapt"
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "analyse": "phpstan analyse",
+        "format": "pint",
+        "check": [
+            "@analyse",
+            "pint --test",
+            "@test"
+        ]
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
